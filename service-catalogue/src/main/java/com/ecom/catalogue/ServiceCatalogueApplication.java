@@ -1,4 +1,4 @@
-package com.example.servicecatalogue;
+package com.ecom.catalogue;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

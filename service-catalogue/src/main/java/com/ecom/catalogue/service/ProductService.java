@@ -1,11 +1,11 @@
-package com.example.servicecatalogue.service;
+package com.ecom.catalogue.service;
 
-import com.example.servicecatalogue.dto.ProductRequest;
-import com.example.servicecatalogue.dto.ProductResponse;
-import com.example.servicecatalogue.entity.Product;
-import com.example.servicecatalogue.entity.StatutProduit;
-import com.example.servicecatalogue.exception.ResourceNotFoundException;
-import com.example.servicecatalogue.repository.ProductRepository;
+import com.ecom.catalogue.dto.ProductRequest;
+import com.ecom.catalogue.dto.ProductResponse;
+import com.ecom.catalogue.entity.Product;
+import com.ecom.catalogue.entity.StatutProduit;
+import com.ecom.catalogue.exception.ResourceNotFoundException;
+import com.ecom.catalogue.repository.ProductRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;

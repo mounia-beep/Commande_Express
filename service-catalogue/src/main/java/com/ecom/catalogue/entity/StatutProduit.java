@@ -1,4 +1,4 @@
-package com.example.servicecatalogue.entity;
+package com.ecom.catalogue.entity;
 
 public enum StatutProduit {
     DISPONIBLE,

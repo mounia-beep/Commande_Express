@@ -1,8 +1,8 @@
-package com.example.servicecatalogue.controller;
+package com.ecom.catalogue.controller;
 
-import com.example.servicecatalogue.dto.ProductRequest;
-import com.example.servicecatalogue.dto.ProductResponse;
-import com.example.servicecatalogue.service.ProductService;
+import com.ecom.catalogue.dto.ProductRequest;
+import com.ecom.catalogue.dto.ProductResponse;
+import com.ecom.catalogue.service.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

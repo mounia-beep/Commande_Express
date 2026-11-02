@@ -1,6 +1,6 @@
-package com.example.servicecatalogue.repository;
+package com.ecom.catalogue.repository;
 
-import com.example.servicecatalogue.entity.Product;
+import com.ecom.catalogue.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {

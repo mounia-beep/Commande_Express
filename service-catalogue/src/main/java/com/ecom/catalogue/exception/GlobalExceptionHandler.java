@@ -1,4 +1,4 @@
-package com.example.servicecatalogue.exception;
+package com.ecom.catalogue.exception;
 
 import java.time.LocalDateTime;
 import java.util.LinkedHashMap;

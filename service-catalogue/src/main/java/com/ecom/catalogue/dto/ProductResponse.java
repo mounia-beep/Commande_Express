@@ -1,7 +1,7 @@
-package com.example.servicecatalogue.dto;
+package com.ecom.catalogue.dto;
 
-import com.example.servicecatalogue.entity.Product;
-import com.example.servicecatalogue.entity.StatutProduit;
+import com.ecom.catalogue.entity.Product;
+import com.ecom.catalogue.entity.StatutProduit;
 import java.math.BigDecimal;
 
 public record ProductResponse(
