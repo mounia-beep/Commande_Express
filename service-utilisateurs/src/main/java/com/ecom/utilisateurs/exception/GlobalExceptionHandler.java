@@ -57,6 +57,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> generic(Exception ex) {
+        ex.printStackTrace(); // <-- AJOUT : affiche la vraie cause dans la console
         return build(HttpStatus.INTERNAL_SERVER_ERROR, "Erreur interne du serveur", null);
     }
 

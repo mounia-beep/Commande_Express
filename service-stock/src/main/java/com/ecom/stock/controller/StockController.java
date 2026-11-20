@@ -6,6 +6,7 @@ import com.ecom.stock.service.StockService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.net.URI;
 import java.util.List;
@@ -15,6 +16,13 @@ import java.util.List;
 public class StockController {
 
     private final StockService service;
+    @Value("${server.port}")
+    private String port;
+
+    @GetMapping("/instance")
+    public String instance() {
+        return "Réponse de l'instance sur le port " + port;
+    }
 
     public StockController(StockService service) {
         this.service = service;

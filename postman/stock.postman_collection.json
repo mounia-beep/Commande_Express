@@ -1,0 +1,420 @@
+{
+  "info": {
+    "_postman_id": "9fb1715c-c5a4-4d2b-8972-a38ef5c77063",
+    "name": "stock",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "51291450",
+    "_collection_link": "https://go.postman.co/collection/51291450-9fb1715c-c5a4-4d2b-8972-a38ef5c77063?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Créer stock produit 1",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"productId\":1,\"quantite\":50,\"seuilAlerte\":10}\t",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8083/stocks",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "stocks"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Créer stock produit 2",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"productId\":2,\"quantite\":5,\"seuilAlerte\":10}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8083/stocks",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "stocks"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Données invalides",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"quantite\":-1,\"seuilAlerte\":-3}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8083/stocks",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "stocks"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Champ manquant",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"productId\":3,\"quantite\":10}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8083/stocks",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "stocks"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Doublon productId",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"productId\":1,\"quantite\":20,\"seuilAlerte\":5}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8083/stocks",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "stocks"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Lister tout",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"productId\":1,\"quantite\":20,\"seuilAlerte\":5}"
+        },
+        "url": {
+          "raw": "http://localhost:8083/stocks",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "stocks"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Lire par id",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"productId\":1,\"quantite\":20,\"seuilAlerte\":5}"
+        },
+        "url": {
+          "raw": "http://localhost:8083/stocks/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "stocks",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Lire par productId",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"productId\":1,\"quantite\":20,\"seuilAlerte\":5}"
+        },
+        "url": {
+          "raw": "http://localhost:8083/stocks/product/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "stocks",
+            "product",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "productId sans stock",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"productId\":1,\"quantite\":20,\"seuilAlerte\":5}"
+        },
+        "url": {
+          "raw": "http://localhost:8083/stocks/product/999",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "stocks",
+            "product",
+            "999"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Id inexistant",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"productId\":1,\"quantite\":20,\"seuilAlerte\":5}"
+        },
+        "url": {
+          "raw": "http://localhost:8083/stocks/9999",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "stocks",
+            "9999"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Modifier la quantité",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"productId\":1,\"quantite\":80,\"seuilAlerte\":15}\t",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8083/stocks/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "stocks",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Modifier avec productId déjà pris",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"productId\":2,\"quantite\":80,\"seuilAlerte\":15}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8083/stocks/2",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "stocks",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Supprimer stock 1",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"productId\":2,\"quantite\":80,\"seuilAlerte\":15}"
+        },
+        "url": {
+          "raw": "http://localhost:8083/stocks/2",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "stocks",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Relire le stock supprimé",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"productId\":2,\"quantite\":80,\"seuilAlerte\":15}"
+        },
+        "url": {
+          "raw": "http://localhost:8083/stocks/2",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "stocks",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Nettoyage",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"productId\":1,\"quantite\":80,\"seuilAlerte\":15}\t"
+        },
+        "url": {
+          "raw": "http://localhost:8083/stocks/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "stocks",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
