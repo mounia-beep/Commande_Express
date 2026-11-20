@@ -14,5 +14,6 @@
         <module>eureka-server</module>
         <module>service-catalogue</module>
         <module>service-stock</module>
+        <module>config-server</module>
     </modules>
 </project>
