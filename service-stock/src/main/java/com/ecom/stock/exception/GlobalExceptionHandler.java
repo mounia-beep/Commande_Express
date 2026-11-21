@@ -60,6 +60,10 @@ public class GlobalExceptionHandler {
         return build(HttpStatus.INTERNAL_SERVER_ERROR, "Erreur interne du serveur", null);
     }
 
+    @ExceptionHandler(ServiceUnavailableException.class)
+    public ResponseEntity<ErrorResponse> serviceUnavailable(ServiceUnavailableException ex) {
+        return build(HttpStatus.SERVICE_UNAVAILABLE, ex.getMessage(), null);
+    }
     private ResponseEntity<ErrorResponse> build(HttpStatus status, String message, Map<String, String> details) {
         return ResponseEntity.status(status).body(
                 new ErrorResponse(LocalDateTime.now(), status.value(), status.getReasonPhrase(), message, details));

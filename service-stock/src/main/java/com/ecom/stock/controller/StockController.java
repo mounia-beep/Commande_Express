@@ -7,6 +7,7 @@ import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Value;
+import com.ecom.stock.dto.StockDetailsDTO;
 
 import java.net.URI;
 import java.util.List;
@@ -52,6 +53,10 @@ public class StockController {
     @PutMapping("/{id}")
     public StockResponseDTO update(@PathVariable Long id, @Valid @RequestBody StockRequestDTO dto) {
         return service.update(id, dto);
+    }
+    @GetMapping("/product/{productId}/details")
+    public StockDetailsDTO findDetails(@PathVariable Long productId) {
+        return service.findDetailsByProductId(productId);
     }
 
     @DeleteMapping("/{id}")
