@@ -1,0 +1,30 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: route-utilisateurs
+              uri: lb://service-utilisateurs
+              predicates:
+                - Path=/users/**
+
+            - id: route-catalogue
+              uri: lb://service-catalogue
+              predicates:
+                - Path=/products/**
+
+            - id: route-stock
+              uri: lb://service-stock
+              predicates:
+                - Path=/stocks/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${server.port}
