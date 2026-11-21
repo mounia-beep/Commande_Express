@@ -169,6 +169,89 @@
         }
       },
       "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8083/stocks/instance",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "stocks",
+            "instance"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8093/stocks/instance",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8093",
+          "path": [
+            "stocks",
+            "instance"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          "// Lit le code attendu dans le nom de la requête : \"[201] Créer un produit\"\r",
+          "const m = pm.info.requestName.match(/^\\[(\\d{3})\\]/);\r",
+          "if (m) {\r",
+          "    const attendu = parseInt(m[1], 10);\r",
+          "\r",
+          "    pm.test(\"Statut attendu : \" + attendu, function () {\r",
+          "        pm.response.to.have.status(attendu);\r",
+          "    });\r",
+          "\r",
+          "    if (attendu === 201) {\r",
+          "        pm.test(\"La réponse contient un id\", function () {\r",
+          "            pm.expect(pm.response.json()).to.have.property(\"id\");\r",
+          "        });\r",
+          "    }\r",
+          "    if (attendu >= 400) {\r",
+          "        pm.test(\"Erreur JSON cohérente (status = \" + attendu + \")\", function () {\r",
+          "            pm.expect(pm.response.json().status).to.eql(attendu);\r",
+          "        });\r",
+          "    }\r",
+          "}"
+        ]
+      }
     }
   ]
 }

@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Value;
 import com.ecom.stock.dto.StockDetailsDTO;
+import com.ecom.stock.dto.CreationResult;
+
 
 import java.net.URI;
 import java.util.List;
@@ -30,9 +32,16 @@ public class StockController {
     }
 
     @PostMapping
-    public ResponseEntity<StockResponseDTO> create(@Valid @RequestBody StockRequestDTO dto) {
-        StockResponseDTO created = service.create(dto);
-        return ResponseEntity.created(URI.create("/stocks/" + created.id())).body(created);
+    public ResponseEntity<StockResponseDTO> create(
+            @Valid @RequestBody StockRequestDTO dto,
+            @RequestHeader(value = "Idempotency-Key", required = false) String idempotencyKey) {
+        CreationResult result = service.createIdempotent(dto, idempotencyKey);
+        if (!result.created()) {
+            return ResponseEntity.ok()
+                    .header("Idempotent-Replayed", "true")
+                    .body(result.stock());
+        }
+        return ResponseEntity.created(URI.create("/stocks/" + result.stock().id())).body(result.stock());
     }
 
     @GetMapping
