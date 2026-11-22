@@ -11,6 +11,38 @@ spring:
       ddl-auto: update
     show-sql: true
     open-in-view: false
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  cloud:                                  # V6
+    openfeign:
+      client:
+        config:
+          service-catalogue:              # = le nom dans @FeignClient
+            connectTimeout: 1000          # ms pour établir la connexion
+            readTimeout: 1500             # ms pour recevoir la réponse
+            loggerLevel: basic            # affiche chaque tentative dans la console
+
+resilience4j:                             # V6
+  circuitbreaker:
+    configs:
+      default:
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 6                       # on observe les 6 derniers appels
+        minimumNumberOfCalls: 3                    # pas de décision avant 3 appels
+        failureRateThreshold: 50                   # 50 % d'échecs : le circuit s'ouvre
+        waitDurationInOpenState: 10s               # il reste ouvert 10 s
+        permittedNumberOfCallsInHalfOpenState: 2   # puis 2 appels d'essai
+  timelimiter:
+    configs:
+      default:
+        timeoutDuration: 6s                        # limite totale d'un appel (tentatives incluses)
+
+logging:                                  # V6
+  level:
+    com.ecom.stock.client.ProductClient: DEBUG     # rend visibles les tentatives Feign
 
 eureka:
   client:

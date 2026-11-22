@@ -1,0 +1,575 @@
+{
+  "info": {
+    "_postman_id": "f0e3ded4-666c-48ac-8915-b5bfed864f04",
+    "name": "Catalogue",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "51291450",
+    "_collection_link": "https://go.postman.co/collection/51291450-f0e3ded4-666c-48ac-8915-b5bfed864f04?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Créer produit 1",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"nom\":\"Laptop HP\",\"prix\":7500.00,\"description\":\"Laptop 15 pouces\",\"categorie\":\"Informatique\",\"statut\":\"DISPONIBLE\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/products",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "products"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Créer produit 2 (sans statut)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"nom\":\"Souris Logitech\",\"prix\":150,\"description\":\"Souris sans fil\",\"categorie\":\"Accessoires\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/products",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "products"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Données invalides",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"nom\":\"\",\"prix\":-5}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/products",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "products"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Prix manquant",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"nom\":\"Clavier\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/products",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "products"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Statut inconnu",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"nom\":\"Ecran\",\"prix\":2000,\"statut\":\"BIDON\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/products",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "products"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Doublon (casse différente)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"nom\":\"laptop hp\",\"prix\":8000}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/products",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "products"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Lister tout",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"nom\":\"laptop hp\",\"prix\":8000}"
+        },
+        "url": {
+          "raw": "http://localhost:8082/products",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "products"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Filtrer par catégorie",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8082/products?categorie=accessoires",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "products"
+          ],
+          "query": [
+            {
+              "key": "categorie",
+              "value": "accessoires"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Lire par id",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"nom\":\"laptop hp\",\"prix\":8000}"
+        },
+        "url": {
+          "raw": "http://localhost:8082/products/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "products",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Id inexistant",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"nom\":\"laptop hp\",\"prix\":8000}"
+        },
+        "url": {
+          "raw": "http://localhost:8082/products/9999",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "products",
+            "9999"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Id invalide",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"nom\":\"laptop hp\",\"prix\":8000}"
+        },
+        "url": {
+          "raw": "http://localhost:8082/products/abc",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "products",
+            "abc"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Modifier",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"nom\":\"Laptop HP\",\"prix\":6900.00,\"description\":\"Laptop 15 pouces en promo\",\"categorie\":\"Informatique\",\"statut\":\"DISPONIBLE\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/products/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "products",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Modifier avec nom déjà pris",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"nom\":\"Souris Logitech\",\"prix\":6900}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/products/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "products",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Modifier id inexistant",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"nom\":\"X\",\"prix\":10}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/products/9999",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "products",
+            "9999"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Passer en indisponible",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"nom\":\"Souris Logitech\",\"prix\":150,\"categorie\":\"Accessoires\",\"statut\":\"INDISPONIBLE\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/products/2",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "products",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Supprimer produit 1",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"nom\":\"Souris Logitech\",\"prix\":150,\"categorie\":\"Accessoires\",\"statut\":\"INDISPONIBLE\"}"
+        },
+        "url": {
+          "raw": "http://localhost:8082/products/2",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "products",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Relire le produit supprimé",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"nom\":\"Souris Logitech\",\"prix\":150,\"categorie\":\"Accessoires\",\"statut\":\"INDISPONIBLE\"}"
+        },
+        "url": {
+          "raw": "http://localhost:8082/products/2",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "products",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Supprimer deux fois",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"nom\":\"Souris Logitech\",\"prix\":150,\"categorie\":\"Accessoires\",\"statut\":\"INDISPONIBLE\"}"
+        },
+        "url": {
+          "raw": "http://localhost:8082/products/2",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "products",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Nettoyage",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"nom\":\"Souris Logitech\",\"prix\":150,\"categorie\":\"Accessoires\",\"statut\":\"INDISPONIBLE\"}"
+        },
+        "url": {
+          "raw": "http://localhost:8082/products/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "products",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          "// Lit le code attendu dans le nom de la requête : \"[201] Créer un produit\"\r",
+          "const m = pm.info.requestName.match(/^\\[(\\d{3})\\]/);\r",
+          "if (m) {\r",
+          "    const attendu = parseInt(m[1], 10);\r",
+          "\r",
+          "    pm.test(\"Statut attendu : \" + attendu, function () {\r",
+          "        pm.response.to.have.status(attendu);\r",
+          "    });\r",
+          "\r",
+          "    if (attendu === 201) {\r",
+          "        pm.test(\"La réponse contient un id\", function () {\r",
+          "            pm.expect(pm.response.json()).to.have.property(\"id\");\r",
+          "        });\r",
+          "    }\r",
+          "    if (attendu >= 400) {\r",
+          "        pm.test(\"Erreur JSON cohérente (status = \" + attendu + \")\", function () {\r",
+          "            pm.expect(pm.response.json().status).to.eql(attendu);\r",
+          "        });\r",
+          "    }\r",
+          "}"
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": ""
+    }
+  ]
+}

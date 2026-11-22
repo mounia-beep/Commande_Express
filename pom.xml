@@ -16,5 +16,7 @@
         <module>service-stock</module>
         <module>config-server</module>
         <module>service-commande</module>
+        <module>gateway-server</module>
+        <module>service-notification</module>
     </modules>
 </project>

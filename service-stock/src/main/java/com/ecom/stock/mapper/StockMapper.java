@@ -4,6 +4,9 @@ import com.ecom.stock.dto.StockRequestDTO;
 import com.ecom.stock.dto.StockResponseDTO;
 import com.ecom.stock.entity.Stock;
 import org.springframework.stereotype.Component;
+import com.ecom.stock.dto.ProductClientDTO;
+import com.ecom.stock.dto.StockDetailsDTO;
+
 
 @Component
 public class StockMapper {
@@ -22,5 +25,9 @@ public class StockMapper {
 
     public StockResponseDTO toDto(Stock s) {
         return new StockResponseDTO(s.getId(), s.getProductId(), s.getQuantite(), s.getSeuilAlerte());
+    }
+    public StockDetailsDTO toDetailsDto(Stock s, ProductClientDTO produit) {
+        return new StockDetailsDTO(s.getId(), s.getQuantite(), s.getSeuilAlerte(),
+                s.getQuantite() <= s.getSeuilAlerte(), produit);
     }
 }

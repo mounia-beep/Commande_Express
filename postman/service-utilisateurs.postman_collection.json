@@ -1,0 +1,332 @@
+{
+  "info": {
+    "_postman_id": "72b9a41b-9a98-4f0c-b09c-537b13e026ba",
+    "name": "service-utilisateurs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "51291450",
+    "_collection_link": "https://go.postman.co/collection/51291450-72b9a41b-9a98-4f0c-b09c-537b13e026ba?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Créer utilisateur valide",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nom\": \"Meryem Rabi\",\r\n  \"email\": \"meryem@example.com\",\r\n  \"role\": \"CLIENT\",\r\n  \"actif\": true\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/users",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Email déjà utilisé",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nom\": \"Meryem Rabi\",\r\n  \"email\": \"meryem@example.com\",\r\n  \"role\": \"CLIENT\",\r\n  \"actif\": true\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/users",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Données invalides",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nom\": \"\",\r\n  \"email\": \"meryemm@example.com\",\r\n  \"role\": \"\",\r\n  \"actif\": true\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/users",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Rôle inconnu",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nom\": \"mmm\",\r\n  \"email\": \"meryem@example.com\",\r\n  \"role\": \"XYZ\",\r\n  \"actif\": true\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/users",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Lister",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nom\": \"mmm\",\r\n  \"email\": \"meryem@example.com\",\r\n  \"role\": \"XYZ\",\r\n  \"actif\": true\r\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/users",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Détail existant",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nom\": \"mmm\",\r\n  \"email\": \"meryem@example.com\",\r\n  \"role\": \"XYZ\",\r\n  \"actif\": true\r\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/users/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Détail inexistant",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/users/9999",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "9999"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Modifier",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nom\": \"Meryem Rabi\",\r\n  \"email\": \"meryem@example.com\",\r\n  \"role\": \"CLIENT\",\r\n  \"actif\": true\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/users/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Créer utilisateur valide",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nom\": \"soumaya mmm\",\r\n  \"email\": \"soumaya@example.com\",\r\n  \"role\": \"CLIENT\",\r\n  \"actif\": true\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/users",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Modifier avec email d’un autre",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nom\": \"Meryem Rabi\",\r\n  \"email\": \"soumaya@example.com\",\r\n  \"role\": \"CLIENT\",\r\n  \"actif\": true\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/users/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Supprimer",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/users/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          "// Lit le code attendu dans le nom de la requête : \"[201] Créer un produit\"\r",
+          "const m = pm.info.requestName.match(/^\\[(\\d{3})\\]/);\r",
+          "if (m) {\r",
+          "    const attendu = parseInt(m[1], 10);\r",
+          "\r",
+          "    pm.test(\"Statut attendu : \" + attendu, function () {\r",
+          "        pm.response.to.have.status(attendu);\r",
+          "    });\r",
+          "\r",
+          "    if (attendu === 201) {\r",
+          "        pm.test(\"La réponse contient un id\", function () {\r",
+          "            pm.expect(pm.response.json()).to.have.property(\"id\");\r",
+          "        });\r",
+          "    }\r",
+          "    if (attendu >= 400) {\r",
+          "        pm.test(\"Erreur JSON cohérente (status = \" + attendu + \")\", function () {\r",
+          "            pm.expect(pm.response.json().status).to.eql(attendu);\r",
+          "        });\r",
+          "    }\r",
+          "}"
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": ""
+    },
+    {
+      "value": ""
+    }
+  ]
+}

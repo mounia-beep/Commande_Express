@@ -1,0 +1,614 @@
+{
+  "info": {
+    "_postman_id": "9fb1715c-c5a4-4d2b-8972-a38ef5c77063",
+    "name": "stock",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "51291450",
+    "_collection_link": "https://go.postman.co/collection/51291450-9fb1715c-c5a4-4d2b-8972-a38ef5c77063?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Créer stock produit 1",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"productId\":1,\"quantite\":50,\"seuilAlerte\":10}\t",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8083/stocks",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "stocks"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Créer stock produit 2",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"productId\":2,\"quantite\":5,\"seuilAlerte\":10}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8083/stocks",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "stocks"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Données invalides",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"quantite\":-1,\"seuilAlerte\":-3}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8083/stocks",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "stocks"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Champ manquant",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"productId\":3,\"quantite\":10}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8083/stocks",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "stocks"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Doublon productId",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"productId\":1,\"quantite\":20,\"seuilAlerte\":5}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8083/stocks",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "stocks"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Lister tout",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"productId\":1,\"quantite\":20,\"seuilAlerte\":5}"
+        },
+        "url": {
+          "raw": "http://localhost:8083/stocks",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "stocks"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Lire par id",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"productId\":1,\"quantite\":20,\"seuilAlerte\":5}"
+        },
+        "url": {
+          "raw": "http://localhost:8083/stocks/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "stocks",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Lire par productId",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"productId\":1,\"quantite\":20,\"seuilAlerte\":5}"
+        },
+        "url": {
+          "raw": "http://localhost:8083/stocks/product/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "stocks",
+            "product",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "productId sans stock",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"productId\":1,\"quantite\":20,\"seuilAlerte\":5}"
+        },
+        "url": {
+          "raw": "http://localhost:8083/stocks/product/999",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "stocks",
+            "product",
+            "999"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Id inexistant",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"productId\":1,\"quantite\":20,\"seuilAlerte\":5}"
+        },
+        "url": {
+          "raw": "http://localhost:8083/stocks/9999",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "stocks",
+            "9999"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Modifier la quantité",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"productId\":1,\"quantite\":80,\"seuilAlerte\":15}\t",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8083/stocks/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "stocks",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Modifier avec productId déjà pris",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"productId\":2,\"quantite\":80,\"seuilAlerte\":15}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8083/stocks/2",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "stocks",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Supprimer stock 1",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"productId\":2,\"quantite\":80,\"seuilAlerte\":15}"
+        },
+        "url": {
+          "raw": "http://localhost:8083/stocks/2",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "stocks",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Relire le stock supprimé",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"productId\":2,\"quantite\":80,\"seuilAlerte\":15}"
+        },
+        "url": {
+          "raw": "http://localhost:8083/stocks/2",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "stocks",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Nettoyage",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"productId\":1,\"quantite\":80,\"seuilAlerte\":15}\t"
+        },
+        "url": {
+          "raw": "http://localhost:8083/stocks/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "stocks",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Créer un produit pour le test",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.collectionVariables.set(\r",
+              "    \"productIdPanne\",\r",
+              "    pm.response.json().id\r",
+              ");"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nom\": \"Panne {{$timestamp}}\",\r\n  \"prix\": 100\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/products",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "products"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Arrêter Catalogue et essayer de créer un stock",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"productId\": {{productIdPanne}},\r\n  \"quantite\": 5,\r\n  \"seuilAlerte\": 1\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8083/stocks",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "stocks"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Relancer Catalogue et refaire la même requête",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"productId\": {{productIdPanne}},\r\n  \"quantite\": 5,\r\n  \"seuilAlerte\": 1\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8083/stocks",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "stocks"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "New Vérifier le mode dégradéReVérifier le mode dégradéquest",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"produit null (mode dégradé)\", () => {\r",
+              "    pm.expect(pm.response.json().produit).to.eql(null);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8083/stocks/product/8/details",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "stocks",
+            "product",
+            "8",
+            "details"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          "// Lit le code attendu dans le nom de la requête : \"[201] Créer un produit\"\r",
+          "const m = pm.info.requestName.match(/^\\[(\\d{3})\\]/);\r",
+          "if (m) {\r",
+          "    const attendu = parseInt(m[1], 10);\r",
+          "\r",
+          "    pm.test(\"Statut attendu : \" + attendu, function () {\r",
+          "        pm.response.to.have.status(attendu);\r",
+          "    });\r",
+          "\r",
+          "    if (attendu === 201) {\r",
+          "        pm.test(\"La réponse contient un id\", function () {\r",
+          "            pm.expect(pm.response.json()).to.have.property(\"id\");\r",
+          "        });\r",
+          "    }\r",
+          "    if (attendu >= 400) {\r",
+          "        pm.test(\"Erreur JSON cohérente (status = \" + attendu + \")\", function () {\r",
+          "            pm.expect(pm.response.json().status).to.eql(attendu);\r",
+          "        });\r",
+          "    }\r",
+          "}"
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "productIdPanne",
+      "value": ""
+    }
+  ]
+}
