@@ -18,6 +18,10 @@ Plateforme de commande en ligne en microservices (Spring Boot, Spring Cloud) : u
 10. Résilience et idempotence
 11. Gestion des erreurs
 12. Tests Postman
+13. Scénarios de démonstration
+14. Structure du dépôt
+15. Limites connues
+16. Dépannage
 
 
 ---
@@ -59,7 +63,8 @@ client["Client / Postman"] -->|"HTTP :8080"| gw["gateway-server :8080"]
 
 
 ```
-### Services, ports et bases![Microservices Stock Alert Architecture-2026-11-21-183520.png](../../../../../Downloads/Microservices%20Stock%20Alert%20Architecture-2026-11-21-183520.png)
+
+### Services, ports et bases
 
 | Module | Port | Rôle | Base de données |
 |---|---|---|---|
@@ -257,7 +262,7 @@ Aucune API : le service consomme des messages RabbitMQ.
 |---|---|---|---|
 | service-stock | `Stock.productId` | `Product` (service-catalogue) | simple `Long`, validée par Feign à la création et à la modification |
 | service-notification | `productId` dans `StockAlerteEvent` | `Product` | simple identifiant dans le message |
-| service-commande | (binôme) | utilisateur, produit | à compléter |
+| service-commande | `Commande.userId`, `LigneCommande.productId` | `User` (service-utilisateurs), `Product` (service-catalogue) | simples `Long`, validés par Feign à la création de la commande |
 
 ### service-utilisateurs
 
@@ -401,7 +406,6 @@ classDiagram
 ```
 
 ### service-commande
-### service-commande
 
 ```mermaid
 classDiagram
@@ -465,6 +469,8 @@ classDiagram
     LigneCommande ..> ProductDistant : productId référence distante
     note for Commande "userId est un simple Long : pas de clé étrangère, pas de ManyToOne. L'existence est validée par Feign."
 ```
+
+---
 
 ## 8. Communication synchrone (OpenFeign)
 
@@ -574,13 +580,6 @@ Ordre conseillé : Utilisateurs, Catalogue, Stock, Gateway, Feign. Pour rejouer 
 | Mode dégradé | catalogue arrêté, `GET .../details` | 200 avec `produit: null` |
 | Idempotence | `POST /stocks` deux fois avec la même clé | 201 puis 200, même `id` |
 
-Captures dans `docs/` :
-![Eureka](docs/eureka.png)
-![Load balancing](docs/load-balancing.png)
-![RabbitMQ](docs/rabbitmq-queue.png)
-![Mailpit](docs/mailpit.png)
-![Circuit breaker](docs/circuit-breaker.png)
-
 ---
 
 ## 14. Structure du dépôt
@@ -596,7 +595,6 @@ Commande_Express/
 ├── service-notification/
 ├── service-commande/       # (binôme)
 ├── postman/                # collections exportées
-├── docs/                   # captures d'écran
 ├── docker-compose.yml      # PostgreSQL ×4, RabbitMQ, Mailpit
 ├── pom.xml                 # parent multi-modules
 └── README.md
