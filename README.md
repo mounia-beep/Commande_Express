@@ -401,9 +401,70 @@ classDiagram
 ```
 
 ### service-commande
-(diagramme à ajouter par la binôme : références vers utilisateur, produit et stock)
+### service-commande
 
----
+```mermaid
+classDiagram
+    class CommandeController
+    class CommandeService
+    class CommandeRepository {
+        <<interface>>
+    }
+    class Commande {
+        -Long id
+        -Long userId
+        -LocalDateTime dateCommande
+        -StatutCommande statut
+        -BigDecimal total
+    }
+    class LigneCommande {
+        -Long id
+        -Long productId
+        -int quantite
+        -BigDecimal prixUnitaire
+    }
+    class StatutCommande {
+        <<enumeration>>
+        EN_ATTENTE
+        VALIDEE
+        ANNULEE
+    }
+    class UserClient {
+        <<Feign>>
+        +getUserById(Long id)
+    }
+    class ProductClient {
+        <<Feign>>
+        +getProductById(Long id)
+    }
+    class StockClient {
+        <<Feign>>
+        +getStockByProductId(Long productId)
+    }
+    class UserDistant["User (service-utilisateurs)"] {
+        <<service distant>>
+    }
+    class ProductDistant["Product (service-catalogue)"] {
+        <<service distant>>
+    }
+    class StockDistant["Stock (service-stock)"] {
+        <<service distant>>
+    }
+    CommandeController --> CommandeService
+    CommandeService --> CommandeRepository
+    CommandeService --> UserClient
+    CommandeService --> ProductClient
+    CommandeService --> StockClient
+    CommandeRepository ..> Commande
+    Commande "1" --> "*" LigneCommande
+    Commande --> StatutCommande
+    UserClient ..> UserDistant : appelle
+    ProductClient ..> ProductDistant : appelle
+    StockClient ..> StockDistant : appelle
+    Commande ..> UserDistant : userId référence distante
+    LigneCommande ..> ProductDistant : productId référence distante
+    note for Commande "userId est un simple Long : pas de clé étrangère, pas de ManyToOne. L'existence est validée par Feign."
+```
 
 ## 8. Communication synchrone (OpenFeign)
 
